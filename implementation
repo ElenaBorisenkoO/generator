@@ -10,10 +10,14 @@ var val = 12;
 var val2 = {name:"jack"};
 
 function* gen(){
-yield () => sum(1,2);
-yield prom;
-yield val;
-yield val2;
+const a = yield () => sum(1,2);
+console.log(a);
+const b = yield prom;
+console.log(b);
+const c = yield val;
+console.log(c);
+const d = yield val2;
+console.log(d);
 }
 var iterator = gen();
 

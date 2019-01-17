@@ -19,9 +19,10 @@ const data = [];
 return new Promise(resolve => {
 function execute(generator, yieldValue) {
     const next = generator.next(yieldValue);
-    if (!next.done) {
-        if (next.value instanceof Promise) {
-            next.value.then(
+    let {value, done} = next;
+    if (!done) {
+        if (value instanceof Promise) {
+            value.then(
                 res => {
                     data.push(res);
                   execute(generator, res);
@@ -31,12 +32,12 @@ function execute(generator, yieldValue) {
                     execute(generator, res);
                 }
             );
-        } else if (typeof next.value === 'function') {
-           data.push(next.value());
-            execute(generator,next.value());
+        } else if (typeof value === 'function') {
+           data.push(value());
+            execute(generator,value());
         } else {
-            data.push(next.value);
-            execute(generator, next.value);
+            data.push(value);
+            execute(generator, value);
         }
     } else {
         resolve(data);

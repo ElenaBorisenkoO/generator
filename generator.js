@@ -33,8 +33,9 @@ function execute(generator, yieldValue) {
                 }
             );
         } else if (typeof value === 'function') {
-           data.push(value());
-            execute(generator,value());
+            const result = value();
+           data.push(result);
+            execute(generator,result);
         } else {
             data.push(value);
             execute(generator, value);

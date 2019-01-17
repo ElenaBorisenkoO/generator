@@ -1,0 +1,23 @@
+{
+  "name": "generator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "generator.js",
+  "dependencies": {
+    "eslint": "^5.12.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ElenaBorisenkoO/generator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ElenaBorisenkoO/generator/issues"
+  },
+  "homepage": "https://github.com/ElenaBorisenkoO/generator#readme"
+}

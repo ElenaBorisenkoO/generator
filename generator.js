@@ -20,7 +20,9 @@ return new Promise(resolve => {
 function execute(generator, yieldValue) {
     const next = generator.next(yieldValue);
     let {value, done} = next;
-    if (!done) {
+    if (done) {
+        return resolve(data);
+    }
         if (value instanceof Promise) {
             value.then(
                 res => {
@@ -36,14 +38,10 @@ function execute(generator, yieldValue) {
             const result = value();
            data.push(result);
             execute(generator,result);
-        } else {
-            data.push(value);
-            execute(generator, value);
         }
-    } else {
-        resolve(data);
-    }
-}
+            data.push(value);
+            execute(generator, value);   
+    } 
 execute(iterator);
 });
 }
